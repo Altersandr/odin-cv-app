@@ -1,0 +1,12 @@
+section {
+  height: 200px;
+
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+label {
+  display: inline-block;
+}
