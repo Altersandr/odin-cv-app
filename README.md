@@ -11,3 +11,5 @@ Be sure to include an edit and submit button for each section or for the whole C
 Create a components folder in your src directory and add your components.
 Include a styles folder in your src directory for your CSS files. You’ll need to import these in the component files to use them.
 Don’t forget to push your solution to GitHub. You should be proud of your work and show it off to the world!
+
+HAVE A MODAL THAT DISPLAYS THE CV AFTER YOU INSERTED ALL THE INFORMATION

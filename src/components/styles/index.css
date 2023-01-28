@@ -1,8 +1,19 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-body {
-  background-color: gray;
+body,
+html {
+  height: 100vh;
+  width: 100vw;
+  /* border: 1px solid white; */
+  /* background-color: gray; */
+}
+
+#body-container {
+  height: fit-content;
+
+  font-family: Ubuntu;
 }

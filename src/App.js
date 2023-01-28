@@ -1,7 +1,15 @@
 import "./components/styles/index.css";
-import General from "./components/General";
+import { Body } from "./components/Body";
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
 function App() {
-  return <General />;
+  return (
+    <>
+      <Header />
+      <Body />
+      <Footer />
+    </>
+  );
 }
 
 export default App;
