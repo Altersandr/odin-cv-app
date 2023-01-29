@@ -1,9 +1,28 @@
 #preview {
+  height: 100%;
+  border: 1px solid white;
   display: grid;
   grid-template-columns: 1fr 2fr;
+  color: rgb(206, 206, 206);
 }
 
-#left,
+h1,
+h3 {
+  color: white;
+}
+/* #left,
 #right div {
   padding: 20px;
+} */
+
+#left,
+#right {
+  display: flex;
+  flex-direction: column;
+  /* gap: 40px; */
+  justify-content: space-evenly;
+}
+
+#photo {
+  border-radius: 50%;
 }

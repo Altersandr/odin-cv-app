@@ -6,16 +6,16 @@ import { Preview } from "./Preview";
 import "./styles/Body.css";
 
 export class Body extends Component {
-  render() {
+  render(props) {
     return (
       <div id="body-container">
         <div id="body-left">
-          <General />
+          <General methods={this.props} />
           <Experience />
           <Education />
         </div>
         <div id="body-right">
-          <Preview />
+          <Preview name={this.props.name} />
         </div>
       </div>
     );

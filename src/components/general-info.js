@@ -2,15 +2,18 @@ import React, { Component } from "react";
 import "./styles/general-info.css";
 
 export class General extends Component {
-  render() {
+  render(props) {
+    const method = this.props.methods.methods;
     return (
       <section>
+        {console.log(this.props.methods.methods)}
+        {console.log(this.props)}
         <h1>General information</h1>
         <br />
         <form>
           <label htmlFor="name">Full name:</label>
 
-          <input type="text" id="name" name="name"></input>
+          <input type="text" id="name" name="name" onChange={method}></input>
           <label htmlFor="email">Email:</label>
 
           <input type="email" id="email" name="email"></input>
@@ -33,9 +36,14 @@ export class General extends Component {
             cols="33"
           ></textarea>
 
-          <label htmlFor="photo">
+          <label htmlFor="photoUpload">
             Photo:
-            <input type="file" id="photo" name="photo" accept="image/*"></input>
+            <input
+              type="file"
+              id="photoUpload"
+              name="photoUpload"
+              accept="image/*"
+            ></input>
           </label>
         </form>
       </section>
