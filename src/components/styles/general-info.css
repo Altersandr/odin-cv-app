@@ -1,3 +1,8 @@
+div {
+  display: flex;
+  flex-direction: column;
+}
+
 section {
   height: 400px;
   display: flex;
@@ -10,6 +15,7 @@ section {
 
 input,
 textarea {
+  z-index: 3;
   display: block;
   width: 250px;
   border-radius: 5px;

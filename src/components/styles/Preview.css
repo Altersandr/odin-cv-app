@@ -1,6 +1,6 @@
 #preview {
   height: 100%;
-  border: 1px solid white;
+  /* border: 1px solid white; */
   display: grid;
   grid-template-columns: 1fr 2fr;
   color: rgb(206, 206, 206);

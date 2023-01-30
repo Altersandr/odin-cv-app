@@ -6,16 +6,43 @@ import { Preview } from "./Preview";
 import "./styles/Body.css";
 
 export class Body extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      name: "",
+      title: "",
+      skills: "",
+      email: "",
+      number: "",
+      website: "",
+      bio: "",
+      photo: "",
+    };
+  }
+
+  handleChange = (e, key) => {
+    if (key == "photo")
+      this.setState({
+        [`${key}`]: URL.createObjectURL(e.target.files[0]),
+      });
+    else
+      this.setState({
+        [`${key}`]: e.target.value,
+      });
+    console.log(this.state);
+  };
+
   render(props) {
     return (
       <div id="body-container">
         <div id="body-left">
-          <General methods={this.props} />
+          <General method={this.handleChange} />
           <Experience />
           <Education />
         </div>
         <div id="body-right">
-          <Preview name={this.props.name} />
+          <Preview userInput={this.state} />
         </div>
       </div>
     );
