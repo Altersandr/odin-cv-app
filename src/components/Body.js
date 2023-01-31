@@ -19,12 +19,24 @@ export class Body extends Component {
       bio: "",
       photo: "",
       experience: [],
+      education: [],
     };
   }
 
   handleChange = (e, key, state) => {
     // console.log(key);
     console.log(state);
+    if (key == "education") {
+      // const newExperience = (state) => {
+      //   console.log({ state });
+      //   return { state };
+      // };
+      this.setState({
+        education: [...this.state.education, state],
+
+        /// have to work here
+      });
+    }
     if (key == "experience") {
       // const newExperience = (state) => {
       //   console.log({ state });

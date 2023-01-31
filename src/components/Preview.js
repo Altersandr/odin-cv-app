@@ -21,7 +21,7 @@ export class Preview extends Component {
   };
 
   handleExperience = () => {
-    console.log(this.props.userInput.experience);
+    // console.log(this.props.userInput.experience);
     const length = this.props.userInput.experience.length;
     if (length === 0) return;
     else {
@@ -41,6 +41,27 @@ export class Preview extends Component {
         );
       });
       return <div>{jobs}</div>;
+    }
+  };
+
+  handleEducation = () => {
+    const length = this.props.userInput.education.length;
+    if (length === 0) return;
+    else {
+      let schools = this.props.userInput.experience.map((school, i) => {
+        return (
+          <div key={school + i}>
+            <h3>{school.school}</h3>
+            <h4>{school.studied}</h4>
+
+            <h4>Graduated: {school.graduated}</h4>
+
+            <br />
+          </div>
+        );
+      });
+      console.log(schools);
+      return <div>{schools}</div>;
     }
   };
 
@@ -74,11 +95,14 @@ export class Preview extends Component {
           <div id="education">
             <h1>Education</h1>
             <br />
-            <div>
+
+            <this.handleEducation />
+
+            {/* <div>
               <h3>Secondary school</h3>
               <h4>Really Great High School</h4>
               <h4>2010 - 2014</h4>
-            </div>
+            </div> */}
             <br />
             <div>
               <h3>Bachelor of Technology</h3>
