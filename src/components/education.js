@@ -4,6 +4,7 @@ import "./styles/general-info.css";
 //2. A section to add your education experience (school name, title of study, date of study)
 export class Education extends Component {
   render() {
+    const changeState = this.props.method;
     return (
       <section>
         <h1>Education</h1>

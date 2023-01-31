@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import "./styles/general-info.css";
 
 export class General extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const changeState = this.props.method;
     return (

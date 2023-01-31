@@ -18,11 +18,25 @@ export class Body extends Component {
       website: "",
       bio: "",
       photo: "",
+      experience: [],
     };
   }
 
-  handleChange = (e, key) => {
-    if (key == "photo")
+  handleChange = (e, key, state) => {
+    // console.log(key);
+    console.log(state);
+    if (key == "experience") {
+      // const newExperience = (state) => {
+      //   console.log({ state });
+      //   return { state };
+      // };
+      this.setState({
+        experience: [...this.state.experience, state],
+
+        /// have to work here
+      });
+      // console.log(this.state.experience);
+    } else if (key == "photo")
       this.setState({
         [`${key}`]: URL.createObjectURL(e.target.files[0]),
       });
@@ -30,7 +44,7 @@ export class Body extends Component {
       this.setState({
         [`${key}`]: e.target.value,
       });
-    console.log(this.state);
+    // console.log(this.state.experience);
   };
 
   render(props) {
@@ -38,8 +52,8 @@ export class Body extends Component {
       <div id="body-container">
         <div id="body-left">
           <General method={this.handleChange} />
-          <Experience />
-          <Education />
+          <Experience method={this.handleChange} />
+          <Education method={this.handleChange} />
         </div>
         <div id="body-right">
           <Preview userInput={this.state} />

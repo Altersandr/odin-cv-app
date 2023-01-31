@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import "./styles/Preview.css";
 // import "./styles/Body.css";
 
@@ -11,7 +11,41 @@ export class Preview extends Component {
     return <ul>{skillArray}</ul>;
   };
 
+  handleTasks = (props) => {
+    let index = props.index;
+    let tasks = this.props.userInput.experience[index].tasks.split(",");
+    let taskArray = tasks.map((task) => {
+      return <li key={task}>{task}</li>;
+    });
+    return <ul>{taskArray}</ul>;
+  };
+
+  handleExperience = () => {
+    console.log(this.props.userInput.experience);
+    const length = this.props.userInput.experience.length;
+    if (length === 0) return;
+    else {
+      let jobs = this.props.userInput.experience.map((job, i) => {
+        return (
+          <div key={job + i}>
+            <h3>{job.role}</h3>
+            <h4>{job.company}</h4>
+
+            <h4>
+              From {job.from} To {job.to}
+            </h4>
+
+            <this.handleTasks index={i} />
+            <br />
+          </div>
+        );
+      });
+      return <div>{jobs}</div>;
+    }
+  };
+
   render() {
+    // console.log(this.props.userInput);
     const userInput = this.props.userInput;
     return (
       <div id="preview">
@@ -67,13 +101,13 @@ export class Preview extends Component {
             <h1>Experience</h1>
             <br />
             <div>
-              <h3>Applications developer</h3>
+              <this.handleExperience />
 
-              <h4>Really Great Company</h4>
+              {/* <h4>Really Great Company</h4>
 
               <h4>2016 - Present</h4>
-              <br />
-              <ul>
+              <br /> */}
+              {/* <ul>
                 <li>Database administration and website design</li>
                 <li>
                   Built the logic for a streamlined ad-serving platform that
@@ -82,7 +116,7 @@ export class Preview extends Component {
                 <li>
                   Educational institutions and online classroom management
                 </li>
-              </ul>
+              </ul> */}
             </div>
             <br />
             <div>
