@@ -24,31 +24,16 @@ export class Body extends Component {
   }
 
   handleChange = (e, key, state) => {
-    // console.log(key);
-    console.log(state);
-    if (key == "education") {
-      // const newExperience = (state) => {
-      //   console.log({ state });
-      //   return { state };
-      // };
+    if (key === "education") {
       this.setState({
         education: [...this.state.education, state],
-
-        /// have to work here
       });
-    }
-    if (key == "experience") {
-      // const newExperience = (state) => {
-      //   console.log({ state });
-      //   return { state };
-      // };
+      console.log(this.state.education);
+    } else if (key === "experience") {
       this.setState({
         experience: [...this.state.experience, state],
-
-        /// have to work here
       });
-      // console.log(this.state.experience);
-    } else if (key == "photo")
+    } else if (key === "photo")
       this.setState({
         [`${key}`]: URL.createObjectURL(e.target.files[0]),
       });
@@ -56,10 +41,9 @@ export class Body extends Component {
       this.setState({
         [`${key}`]: e.target.value,
       });
-    // console.log(this.state.experience);
   };
 
-  render(props) {
+  render() {
     return (
       <div id="body-container">
         <div id="body-left">
@@ -73,6 +57,4 @@ export class Body extends Component {
       </div>
     );
   }
-
-  // 1. A section to add general information like name, email, number
 }

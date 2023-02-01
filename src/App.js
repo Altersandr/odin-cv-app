@@ -5,32 +5,14 @@ import { Footer } from "./components/Footer";
 import React, { Component } from "react";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      name: "",
-    };
-  }
-
-  handleChange = (e) => {
-    this.setState({
-      name: e.target.value,
-    });
-  };
-
   render() {
     return (
       <>
         <Header />
-        <Body methods={this.handleChange} name={this.state.name} />
+        <Body />
         <Footer />
       </>
     );
   }
-
-  // <Header />
-  // <Body />
-  // <Footer />
 }
 export default App;

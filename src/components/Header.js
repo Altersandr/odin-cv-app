@@ -5,7 +5,7 @@ export class Header extends Component {
   render() {
     return (
       <header>
-        <h1>CV Generator</h1>
+        <h2>CV Generator</h2>
       </header>
     );
   }

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import "./styles/general-info.css";
+// import "./styles/general-info.css";
 
-//2. A section to add your education experience (school name, title of study, date of study)
+import { format } from "date-fns";
+
 export class Education extends Component {
   constructor() {
     super();
@@ -50,13 +51,13 @@ export class Education extends Component {
           name="graduated"
           onChange={(e) =>
             this.setState({
-              graduated: e.target.value,
+              graduated: format(new Date(e.target.value), "do LLL yyyy"),
             })
           }
         ></input>
         <button
           onClick={(e) => {
-            changeState(e, "school", this.state);
+            changeState(e, "education", this.state);
           }}
         >
           Add

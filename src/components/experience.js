@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import "./styles/general-info.css";
-
-//3. A section to add practical experience
-//(company name, position title, main tasks of your jobs, date from and until when you worked for that company)
-
+import { format } from "date-fns";
 export class Experience extends Component {
   constructor() {
     super();
@@ -40,6 +36,7 @@ export class Experience extends Component {
           type="text"
           id="tasks"
           name="tasks"
+          placeholder="separate on comma"
           onChange={(e) =>
             this.setState({
               tasks: e.target.value,
@@ -66,7 +63,7 @@ export class Experience extends Component {
           type="date"
           onChange={(e) =>
             this.setState({
-              from: e.target.value,
+              from: format(new Date(e.target.value), "LLL yyyy"),
             })
           }
         ></input>
@@ -78,7 +75,7 @@ export class Experience extends Component {
           type="date"
           onChange={(e) =>
             this.setState({
-              to: e.target.value,
+              to: format(new Date(e.target.value), "LLL yyyy"),
             })
           }
         ></input>

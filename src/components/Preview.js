@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "./styles/Preview.css";
-// import "./styles/Body.css";
 
 export class Preview extends Component {
   handleSkills = () => {
+    if (this.props.userInput.skills.length == 0) return;
     let skills = this.props.userInput.skills.split(",");
     let skillArray = skills.map((skill) => {
       return <li key={skill}>{skill}</li>;
@@ -21,7 +21,6 @@ export class Preview extends Component {
   };
 
   handleExperience = () => {
-    // console.log(this.props.userInput.experience);
     const length = this.props.userInput.experience.length;
     if (length === 0) return;
     else {
@@ -30,11 +29,9 @@ export class Preview extends Component {
           <div key={job + i}>
             <h3>{job.role}</h3>
             <h4>{job.company}</h4>
-
             <h4>
               From {job.from} To {job.to}
             </h4>
-
             <this.handleTasks index={i} />
             <br />
           </div>
@@ -45,28 +42,26 @@ export class Preview extends Component {
   };
 
   handleEducation = () => {
+    // console.log(format(new Date("2023-02-01"), "do LLL yyyy"));
+    // console.log(this.props.userInput.education);
     const length = this.props.userInput.education.length;
     if (length === 0) return;
     else {
-      let schools = this.props.userInput.experience.map((school, i) => {
+      let schools = this.props.userInput.education.map((school, i) => {
         return (
           <div key={school + i}>
             <h3>{school.school}</h3>
             <h4>{school.studied}</h4>
-
             <h4>Graduated: {school.graduated}</h4>
-
             <br />
           </div>
         );
       });
-      console.log(schools);
       return <div>{schools}</div>;
     }
   };
 
   render() {
-    // console.log(this.props.userInput);
     const userInput = this.props.userInput;
     return (
       <div id="preview">
@@ -81,11 +76,9 @@ export class Preview extends Component {
           <div id="contact">
             <h1>Contact</h1>
             <br />
-            <div>{userInput.number}</div>
-            <div>{userInput.email}</div>
-            <div>{userInput.website}</div>
-
-            {/* image icons and contact info */}
+            <div className="fa fa-phone"> {userInput.number}</div>
+            <div className="fa fa-envelope"> {userInput.email}</div>
+            <div className="fa fa-desktop"> {userInput.website}</div>
           </div>
           <div id="skills">
             <h1>Skills</h1>
@@ -95,19 +88,8 @@ export class Preview extends Component {
           <div id="education">
             <h1>Education</h1>
             <br />
-
-            <this.handleEducation />
-
-            {/* <div>
-              <h3>Secondary school</h3>
-              <h4>Really Great High School</h4>
-              <h4>2010 - 2014</h4>
-            </div> */}
-            <br />
             <div>
-              <h3>Bachelor of Technology</h3>
-              <h4>Really Great University</h4>
-              <h4>2010 - 2014</h4>
+              <this.handleEducation />
             </div>
           </div>
         </div>
@@ -126,55 +108,6 @@ export class Preview extends Component {
             <br />
             <div>
               <this.handleExperience />
-
-              {/* <h4>Really Great Company</h4>
-
-              <h4>2016 - Present</h4>
-              <br /> */}
-              {/* <ul>
-                <li>Database administration and website design</li>
-                <li>
-                  Built the logic for a streamlined ad-serving platform that
-                  scaled
-                </li>
-                <li>
-                  Educational institutions and online classroom management
-                </li>
-              </ul> */}
-            </div>
-            <br />
-            <div>
-              <h3>Web content manager</h3>
-              <h4>Really Great Company</h4>
-              <h4>2014 - 2016</h4>
-              <br />
-              <ul>
-                <li>Database administration and website design</li>
-                <li>
-                  Built the logic for a streamlined ad-serving platform that
-                  scaled
-                </li>
-                <li>
-                  Educational institutions and online classroom management
-                </li>
-              </ul>
-            </div>
-            <br />
-            <div>
-              <h3>Analysis content</h3>
-              <h4>Really Great Company</h4>
-              <h4>2010 - 2014</h4>
-              <br />
-              <ul>
-                <li>Database administration and website design</li>
-                <li>
-                  Built the logic for a streamlined ad-serving platform that
-                  scaled
-                </li>
-                <li>
-                  Educational institutions and online classroom management
-                </li>
-              </ul>
             </div>
           </div>
         </div>
