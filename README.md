@@ -12,4 +12,4 @@ Create a components folder in your src directory and add your components.
 Include a styles folder in your src directory for your CSS files. You’ll need to import these in the component files to use them.
 Don’t forget to push your solution to GitHub. You should be proud of your work and show it off to the world!
 
-Here you can try my implementation of this project https://altersandr.github.io/odin-cv-app/
+<strong>Here you can try my implementation of this project https://altersandr.github.io/odin-cv-app/ <strong/>
