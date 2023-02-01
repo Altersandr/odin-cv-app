@@ -10,6 +10,7 @@ section {
 
 input,
 textarea {
+  font-size: 16px;
   display: block;
   width: 250px;
   border-radius: 5px;
@@ -75,7 +76,7 @@ button {
   }
 
   #preview {
-    min-height: clamp(900px, 900px, fit-content);
+    min-height: clamp(600px, 900px, fit-content);
     width: 600px;
   }
 }

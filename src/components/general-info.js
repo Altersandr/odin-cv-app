@@ -51,6 +51,7 @@ export class General extends Component {
             onChange={(e) => {
               changeState(e, "email");
             }}
+            required
           ></input>
 
           <label htmlFor="number">Phone number:</label>
@@ -61,6 +62,7 @@ export class General extends Component {
             onChange={(e) => {
               changeState(e, "number");
             }}
+            required
           ></input>
 
           <label htmlFor="website">GitHub:</label>

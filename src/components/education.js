@@ -30,6 +30,7 @@ export class Education extends Component {
               school: e.target.value,
             })
           }
+          required
         ></input>
 
         <label htmlFor="title">Title:</label>
@@ -42,6 +43,7 @@ export class Education extends Component {
               studied: e.target.value,
             })
           }
+          required
         ></input>
 
         <label htmlFor="graduated">Graduated:</label>
@@ -54,6 +56,7 @@ export class Education extends Component {
               graduated: format(new Date(e.target.value), "do LLL yyyy"),
             })
           }
+          required
         ></input>
         <button
           onClick={(e) => {

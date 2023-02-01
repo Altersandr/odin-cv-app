@@ -34,6 +34,7 @@ export class Preview extends Component {
             </h4>
             <this.handleTasks index={i} />
             <br />
+            <button className="fa fa-times"></button>
           </div>
         );
       });
@@ -42,8 +43,6 @@ export class Preview extends Component {
   };
 
   handleEducation = () => {
-    // console.log(format(new Date("2023-02-01"), "do LLL yyyy"));
-    // console.log(this.props.userInput.education);
     const length = this.props.userInput.education.length;
     if (length === 0) return;
     else {
@@ -69,15 +68,19 @@ export class Preview extends Component {
           <img
             src={userInput.photo}
             alt="User Portrait"
-            height="150px"
-            width="150px"
+            height="200px"
+            width="200px"
             id="photo"
           ></img>
           <div id="contact">
             <h1>Contact</h1>
             <br />
             <div className="fa fa-phone"> {userInput.number}</div>
+            <br />
+            <br />
             <div className="fa fa-envelope"> {userInput.email}</div>
+            <br />
+            <br />
             <div className="fa fa-desktop"> {userInput.website}</div>
           </div>
           <div id="skills">

@@ -42,6 +42,7 @@ export class Experience extends Component {
               tasks: e.target.value,
             })
           }
+          required
         ></input>
 
         <label htmlFor="company">Company:</label>
@@ -54,6 +55,7 @@ export class Experience extends Component {
               company: e.target.value,
             })
           }
+          required
         ></input>
 
         <label htmlFor="from">From:</label>
@@ -66,6 +68,7 @@ export class Experience extends Component {
               from: format(new Date(e.target.value), "LLL yyyy"),
             })
           }
+          required
         ></input>
 
         <label htmlFor="to">To:</label>
@@ -78,6 +81,7 @@ export class Experience extends Component {
               to: format(new Date(e.target.value), "LLL yyyy"),
             })
           }
+          required
         ></input>
 
         <button
