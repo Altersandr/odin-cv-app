@@ -7,7 +7,7 @@ export class Preview extends Component {
   handleStateEdit = this.props.handleStateEdit;
 
   handleSkills = () => {
-    if (this.props.userInput.skills.length == 0) return;
+    if (this.props.userInput.skills.length === 0) return;
     let skills = this.props.userInput.skills.split(",");
     let skillArray = skills.map((skill) => {
       return <li key={skill}>{skill}</li>;
@@ -17,19 +17,17 @@ export class Preview extends Component {
 
   handleTasks = (props) => {
     let index = props.index;
-    if (this.props.userInput.experience[index].tasks == undefined) return;
+    if (this.props.userInput.experience[index].tasks === undefined) return;
     let tasks = this.props.userInput.experience[index].tasks.split(",");
-    let taskArray = tasks.map((task) => {
-      return <li key={task}>{task}</li>;
-    });
+    let taskArray = tasks.map((task) => <li key={task}>{task}</li>);
     return <ul>{taskArray}</ul>;
   };
 
-  handleExperience = () => {
-    const length = this.props.userInput.experience.length;
+  handleExperience = (props) => {
+    const length = props.experience.length;
     if (length === 0) return;
     else {
-      let jobs = this.props.userInput.experience.map((job, i) => {
+      let jobs = props.experience.map((job, i) => {
         return (
           <div key={job + i}>
             <h3>{job.role}</h3>
@@ -128,7 +126,9 @@ export class Preview extends Component {
             <h1>Experience</h1>
             <br />
             <div>
-              <this.handleExperience />
+              <this.handleExperience
+                experience={this.props.userInput.experience}
+              />
             </div>
           </div>
         </div>

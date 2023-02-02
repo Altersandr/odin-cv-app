@@ -15,7 +15,7 @@ export class Experience extends Component {
     };
   }
   render() {
-    const changeState = this.props.method;
+    // const changeState = this.props.method;
     return (
       <section>
         <h1>Experience</h1>
@@ -82,10 +82,12 @@ export class Experience extends Component {
         ></input>
 
         <button
-          onClick={(e) => {
-            console.log(this.state);
-            changeState(e, "experience", this.state);
+          onClick={() => {
+            this.props.method(this.state);
             this.setState({
+              role: "",
+              tasks: "",
+              company: "",
               id: Math.floor(Math.random() * 10000),
             });
           }}
