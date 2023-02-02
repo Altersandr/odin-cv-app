@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { format } from "date-fns";
+
 export class Experience extends Component {
   constructor() {
     super();
@@ -81,12 +82,13 @@ export class Experience extends Component {
         ></input>
 
         <button
-        // onClick={(e) => {
-        //   changeState(e, "experience", this.state);
-        //   this.setState({
-        //     id: Math.floor(Math.random() * 10000),
-        //   });
-        // }}
+          onClick={(e) => {
+            console.log(this.state);
+            changeState(e, "experience", this.state);
+            this.setState({
+              id: Math.floor(Math.random() * 10000),
+            });
+          }}
         >
           Add
         </button>

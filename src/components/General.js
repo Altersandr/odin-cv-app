@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import "./styles/general-info.css";
 
 export class General extends Component {
   render() {
