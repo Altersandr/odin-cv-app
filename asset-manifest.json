@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/odin-cv-app/static/css/main.1532e027.css",
-    "main.js": "/odin-cv-app/static/js/main.c4b67a1e.js",
+    "main.css": "/odin-cv-app/static/css/main.4ca04317.css",
+    "main.js": "/odin-cv-app/static/js/main.99c491d4.js",
     "index.html": "/odin-cv-app/index.html",
-    "main.1532e027.css.map": "/odin-cv-app/static/css/main.1532e027.css.map",
-    "main.c4b67a1e.js.map": "/odin-cv-app/static/js/main.c4b67a1e.js.map"
+    "main.4ca04317.css.map": "/odin-cv-app/static/css/main.4ca04317.css.map",
+    "main.99c491d4.js.map": "/odin-cv-app/static/js/main.99c491d4.js.map"
   },
   "entrypoints": [
-    "static/css/main.1532e027.css",
-    "static/js/main.c4b67a1e.js"
+    "static/css/main.4ca04317.css",
+    "static/js/main.99c491d4.js"
   ]
 }
