@@ -86,10 +86,10 @@ export class Experience extends Component {
 
         <button
           onClick={(e) => {
+            changeState(e, "experience", this.state);
             this.setState({
               id: Math.floor(Math.random() * 10000),
             });
-            changeState(e, "experience", this.state);
           }}
         >
           Add
