@@ -29,7 +29,6 @@ export class Body extends Component {
       this.setState({
         education: [...this.state.education, state],
       });
-      console.log(this.state.education);
     } else if (key === "experience") {
       this.setState({
         experience: [...this.state.experience, state],
