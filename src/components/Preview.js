@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import "./styles/Preview.css";
 
 export class Preview extends Component {
+  handleDeleteExperience = this.props.deleteExp;
+  handleDeleteEducation = this.props.deleteEdu;
+  handleStateEdit = this.props.handleStateEdit;
+
   handleSkills = () => {
     if (this.props.userInput.skills.length == 0) return;
     let skills = this.props.userInput.skills.split(",");
@@ -13,6 +17,7 @@ export class Preview extends Component {
 
   handleTasks = (props) => {
     let index = props.index;
+    if (this.props.userInput.experience[index].tasks == undefined) return;
     let tasks = this.props.userInput.experience[index].tasks.split(",");
     let taskArray = tasks.map((task) => {
       return <li key={task}>{task}</li>;
@@ -34,7 +39,13 @@ export class Preview extends Component {
             </h4>
             <this.handleTasks index={i} />
             <br />
-            <button className="fa fa-times"></button>
+            <button
+              onClick={() => {
+                this.handleDeleteExperience(job.id);
+              }}
+            >
+              Delete
+            </button>
           </div>
         );
       });
@@ -53,6 +64,13 @@ export class Preview extends Component {
             <h4>{school.studied}</h4>
             <h4>Graduated: {school.graduated}</h4>
             <br />
+            <button
+              onClick={() => {
+                this.handleDeleteEducation(school.id);
+              }}
+            >
+              Delete
+            </button>
           </div>
         );
       });
@@ -118,7 +136,3 @@ export class Preview extends Component {
     );
   }
 }
-
-//store an example in a json file and fetch it on button press
-//add icons for the contact data
-//main tasks store as an array, split on comma, display as a list.

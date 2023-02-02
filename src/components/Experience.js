@@ -10,9 +10,9 @@ export class Experience extends Component {
       company: "",
       from: "",
       to: "",
+      id: 999,
     };
   }
-
   render() {
     const changeState = this.props.method;
     return (
@@ -86,6 +86,9 @@ export class Experience extends Component {
 
         <button
           onClick={(e) => {
+            this.setState({
+              id: Math.floor(Math.random() * 10000),
+            });
             changeState(e, "experience", this.state);
           }}
         >

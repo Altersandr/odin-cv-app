@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { General } from "./general-info";
-import { Experience } from "./experience";
-import { Education } from "./education";
+import { General } from "./General";
+import { Experience } from "./Experience";
+import { Education } from "./Education";
 import { Preview } from "./Preview";
+
 import "./styles/Body.css";
 
 export class Body extends Component {
@@ -43,6 +44,18 @@ export class Body extends Component {
       });
   };
 
+  handleDeleteExperience = (id) => {
+    this.setState({
+      experience: [...this.state.experience.filter((job) => job.id !== id)],
+    });
+  };
+
+  handleDeleteEducation = (id) => {
+    this.setState({
+      education: [...this.state.education.filter((school) => school.id !== id)],
+    });
+  };
+
   render() {
     return (
       <div id="body-container">
@@ -52,7 +65,11 @@ export class Body extends Component {
           <Education method={this.handleChange} />
         </div>
         <div id="body-right">
-          <Preview userInput={this.state} />
+          <Preview
+            userInput={this.state}
+            deleteExp={this.handleDeleteExperience}
+            deleteEdu={this.handleDeleteEducation}
+          />
         </div>
       </div>
     );

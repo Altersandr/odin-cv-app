@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import "./styles/general-info.css";
 
 import { format } from "date-fns";
 
@@ -11,8 +10,10 @@ export class Education extends Component {
       school: "",
       studied: "",
       graduated: "",
+      id: 888,
     };
   }
+
   render() {
     const changeState = this.props.method;
     return (
@@ -25,6 +26,7 @@ export class Education extends Component {
           type="text"
           id="school"
           name="school"
+          value={this.state.school}
           onChange={(e) =>
             this.setState({
               school: e.target.value,
@@ -38,6 +40,7 @@ export class Education extends Component {
           type="text"
           id="title"
           name="title"
+          value={this.state.studied}
           onChange={(e) =>
             this.setState({
               studied: e.target.value,
@@ -61,6 +64,11 @@ export class Education extends Component {
         <button
           onClick={(e) => {
             changeState(e, "education", this.state);
+            this.setState({
+              school: "",
+              studied: "",
+              id: Math.floor(Math.random() * 10000),
+            });
           }}
         >
           Add
