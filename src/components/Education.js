@@ -14,6 +14,20 @@ export class Education extends Component {
     };
   }
 
+  handleInputChange = (key, value) => {
+    this.setState({
+      [`${key}`]: value,
+    });
+  };
+
+  handleIdChange = () => {
+    this.setState({
+      school: "",
+      studied: "",
+      id: Math.floor(Math.random() * 10000),
+    });
+  };
+
   render() {
     const changeState = this.props.method;
     return (
@@ -27,24 +41,16 @@ export class Education extends Component {
           id="school"
           name="school"
           value={this.state.school}
-          onChange={(e) =>
-            this.setState({
-              school: e.target.value,
-            })
-          }
+          onChange={(e) => this.handleInputChange("school", e.target.value)}
         ></input>
 
-        <label htmlFor="title">Title:</label>
+        <label htmlFor="ed-title">Title:</label>
         <input
           type="text"
-          id="title"
+          id="ed-title"
           name="title"
           value={this.state.studied}
-          onChange={(e) =>
-            this.setState({
-              studied: e.target.value,
-            })
-          }
+          onChange={(e) => this.handleInputChange("studied", e.target.value)}
         ></input>
 
         <label htmlFor="graduated">Graduated:</label>
@@ -53,19 +59,16 @@ export class Education extends Component {
           id="graduated"
           name="graduated"
           onChange={(e) =>
-            this.setState({
-              graduated: format(new Date(e.target.value), "LLL yyyy"),
-            })
+            this.handleInputChange(
+              "graduated",
+              format(new Date(e.target.value), "LLL yyyy")
+            )
           }
         ></input>
         <button
           onClick={(e) => {
             changeState(e, "education", this.state);
-            this.setState({
-              school: "",
-              studied: "",
-              id: Math.floor(Math.random() * 10000),
-            });
+            this.handleIdChange();
           }}
         >
           Add

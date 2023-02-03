@@ -15,21 +15,20 @@ export class Experience extends Component {
     };
   }
 
-  stateUpdate = ( key, value)=>{
+  stateUpdate = (key, value) => {
     this.setState({
       [`${key}`]: value,
-    })
-  }
+    });
+  };
 
-  stateIdUpdate = ()=>{
+  stateIdUpdate = () => {
     this.setState({
       role: "",
       tasks: "",
       company: "",
-      id: Math.floor(Math.random() * 10000)
-    })
-  }
-  
+      id: Math.floor(Math.random() * 10000),
+    });
+  };
 
   render() {
     return (
@@ -41,9 +40,7 @@ export class Experience extends Component {
           id="role"
           name="role"
           type="text"
-          onChange={(e) =>
-            this.stateUpdate("role", e.target.value)
-          }
+          onChange={(e) => this.stateUpdate("role", e.target.value)}
         ></input>
 
         <label htmlFor="tasks">Main tasks:</label>
@@ -52,10 +49,7 @@ export class Experience extends Component {
           id="tasks"
           name="tasks"
           placeholder="separate on comma"
-          onChange={(e) =>
-            this.stateUpdate("tasks", e.target.value)
-          
-          }
+          onChange={(e) => this.stateUpdate("tasks", e.target.value)}
         ></input>
 
         <label htmlFor="company">Company:</label>
@@ -63,9 +57,7 @@ export class Experience extends Component {
           id="company"
           name="company"
           type="text"
-          onChange={(e) =>
-            this.stateUpdate("company", e.target.value)
-          }
+          onChange={(e) => this.stateUpdate("company", e.target.value)}
         ></input>
 
         <label htmlFor="from">From:</label>
@@ -74,8 +66,10 @@ export class Experience extends Component {
           name="from"
           type="date"
           onChange={(e) =>
-            this.stateUpdate("from",  format(new Date(e.target.value), "LLL yyyy"))
-        
+            this.stateUpdate(
+              "from",
+              format(new Date(e.target.value), "LLL yyyy")
+            )
           }
         ></input>
 
@@ -85,20 +79,17 @@ export class Experience extends Component {
           name="to"
           type="date"
           onChange={(e) =>
-            this.stateUpdate("to",  format(new Date(e.target.value), "LLL yyyy"))
-        
+            this.stateUpdate("to", format(new Date(e.target.value), "LLL yyyy"))
           }
         ></input>
 
         <button
-
-
-onClick={(e) => {
-  this.props.method(e, "experience", this.state);
- this.stateIdUpdate()
-}}
-  >
-Add
+          onClick={(e) => {
+            this.props.method(e, "experience", this.state);
+            this.stateIdUpdate();
+          }}
+        >
+          Add
         </button>
       </section>
     );

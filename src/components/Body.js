@@ -24,23 +24,16 @@ export class Body extends Component {
     };
   }
 
-  // handleExperienceInput = (e, key, state) => {
-  //   console.log(this.state)
-  //   this.setState({
-  //     experience: [...this.state.experience, state],
-  //   });
-  // };
-
   handleChange = (e, key, state) => {
     if (key === "education") {
       this.setState({
         [`${key}`]: [...this.state.education, state],
       });
-    } else if (key ==="experience"){
+    } else if (key === "experience") {
       this.setState({
         [`${key}`]: [...this.state.experience, state],
       });
-    }else if (key === "photo")
+    } else if (key === "photo")
       this.setState({
         [`${key}`]: URL.createObjectURL(e.target.files[0]),
       });
