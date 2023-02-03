@@ -42,5 +42,16 @@
     "date-fns": "^2.29.3",
     "gh-pages": "^5.0.0"
   },
-  "homepage": "http://altersandr.github.io/odin-cv-app"
+  "homepage": "http://altersandr.github.io/odin-cv-app",
+  "description": "My app should include",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Altersandr/odin-cv-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Altersandr/odin-cv-app/issues"
+  }
 }
