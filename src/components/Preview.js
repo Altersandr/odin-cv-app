@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import "./styles/Preview.css";
 
 export class Preview extends Component {
-  handleDeleteExperience = this.props.deleteExp();
-  handleDeleteEducation = this.props.deleteEdu();
-
   handleSkills = () => {
     if (this.props.userInput.skills.length === 0) return;
     let skills = this.props.userInput.skills.split(",");
@@ -14,51 +11,47 @@ export class Preview extends Component {
     return <ul>{skillArray}</ul>;
   };
 
-  handleTasks = (props) => {
-    let index = props.index;
-    console.log(props)
-    if (this.props.userInput.experience[index].tasks === undefined) return;
-    let tasks = this.props.userInput.experience[index].tasks.split(",");
+  handleTasks = ({ userInput }, index) => {
+    if (userInput.experience[index].tasks === undefined) return;
+    let tasks = userInput.experience[index].tasks.split(",");
     let taskArray = tasks.map((task) => <li key={task}>{task}</li>);
     return <ul>{taskArray}</ul>;
   };
 
   handleExperience = (props) => {
-    // console.log(Experience)
-    const length = props.experience.length;
-    // console.log(length)
+    const { deleteExp } = this.props;
+    const length = props.length;
     if (length === 0) return;
-     
-      let jobs = props.experience.map((job, i) => {
-        return (
-          <div key={job + i}>
-            <h3>{job.role}</h3>
-            <h4>{job.company}</h4>
-            <h4>
-              From {job.from} To {job.to}
-            </h4>
-            <this.handleTasks index={i} />
-            <br />
-            <button
-              onClick={() => {
-                this.handleDeleteExperience(job.id);
-              }}
-            >
-              Delete
-            </button>
-          </div>
-        );
-      });
-      return <div>{jobs}</div>;
-    
+
+    let jobs = props.map((job, i) => {
+      return (
+        <div key={job + i}>
+          <h3>{job.role}</h3>
+          <h4>{job.company}</h4>
+          <h4>
+            From {job.from} To {job.to}
+          </h4>
+          <div>{this.handleTasks(this.props, i)}</div>
+          <br />
+          <button
+            onClick={() => {
+              deleteExp(job.id);
+            }}
+          >
+            Delete
+          </button>
+        </div>
+      );
+    });
+    return <div>{jobs}</div>;
   };
 
   handleEducation = () => {
-    // console.log(this.props)
-    const length = this.props.userInput.education.length;
+    const { deleteEdu, userInput } = this.props;
+    const length = userInput.education.length;
     if (length === 0) return;
     else {
-      let schools = this.props.userInput.education.map((school, i) => {
+      let schools = userInput.education.map((school, i) => {
         return (
           <div key={school + i}>
             <h3>{school.school}</h3>
@@ -67,7 +60,7 @@ export class Preview extends Component {
             <br />
             <button
               onClick={() => {
-                this.handleDeleteEducation(school.id);
+                deleteEdu(school.id);
               }}
             >
               Delete
@@ -105,14 +98,12 @@ export class Preview extends Component {
           <div id="skills">
             <h1>Skills</h1>
             <br />
-            <this.handleSkills />
+            <div>{this.handleSkills()}</div>
           </div>
           <div id="education">
             <h1>Education</h1>
             <br />
-            <div>
-              <this.handleEducation />
-            </div>
+            <div>{this.handleEducation()}</div>
           </div>
         </div>
         <div id="right">
@@ -128,11 +119,7 @@ export class Preview extends Component {
           <div id="experience">
             <h1>Experience</h1>
             <br />
-            <div>
-              <this.handleExperience
-                experience={this.props.userInput.experience}
-              />
-            </div>
+            <div>{this.handleExperience(this.props.userInput.experience)}</div>
           </div>
         </div>
       </div>
