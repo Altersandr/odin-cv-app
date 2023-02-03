@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { format } from "date-fns";
 
 export class Experience extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       role: "",
@@ -14,8 +14,24 @@ export class Experience extends Component {
       id: 999,
     };
   }
+
+  stateUpdate = ( key, value)=>{
+    this.setState({
+      [`${key}`]: value,
+    })
+  }
+
+  stateIdUpdate = ()=>{
+    this.setState({
+      role: "",
+      tasks: "",
+      company: "",
+      id: Math.floor(Math.random() * 10000)
+    })
+  }
+  
+
   render() {
-    // const changeState = this.props.method;
     return (
       <section>
         <h1>Experience</h1>
@@ -26,9 +42,7 @@ export class Experience extends Component {
           name="role"
           type="text"
           onChange={(e) =>
-            this.setState({
-              role: e.target.value,
-            })
+            this.stateUpdate("role", e.target.value)
           }
         ></input>
 
@@ -39,9 +53,8 @@ export class Experience extends Component {
           name="tasks"
           placeholder="separate on comma"
           onChange={(e) =>
-            this.setState({
-              tasks: e.target.value,
-            })
+            this.stateUpdate("tasks", e.target.value)
+          
           }
         ></input>
 
@@ -51,9 +64,7 @@ export class Experience extends Component {
           name="company"
           type="text"
           onChange={(e) =>
-            this.setState({
-              company: e.target.value,
-            })
+            this.stateUpdate("company", e.target.value)
           }
         ></input>
 
@@ -63,9 +74,8 @@ export class Experience extends Component {
           name="from"
           type="date"
           onChange={(e) =>
-            this.setState({
-              from: format(new Date(e.target.value), "LLL yyyy"),
-            })
+            this.stateUpdate("from",  format(new Date(e.target.value), "LLL yyyy"))
+        
           }
         ></input>
 
@@ -75,24 +85,20 @@ export class Experience extends Component {
           name="to"
           type="date"
           onChange={(e) =>
-            this.setState({
-              to: format(new Date(e.target.value), "LLL yyyy"),
-            })
+            this.stateUpdate("to",  format(new Date(e.target.value), "LLL yyyy"))
+        
           }
         ></input>
 
         <button
-          onClick={() => {
-            this.props.method(this.state);
-            this.setState({
-              role: "",
-              tasks: "",
-              company: "",
-              id: Math.floor(Math.random() * 10000),
-            });
-          }}
-        >
-          Add
+
+
+onClick={(e) => {
+  this.props.method(e, "experience", this.state);
+ this.stateIdUpdate()
+}}
+  >
+Add
         </button>
       </section>
     );

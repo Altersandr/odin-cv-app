@@ -22,28 +22,25 @@ export class Body extends Component {
       experience: [],
       education: [],
     };
-
-    this.handleExperienceInput = this.handleExperienceInput.bind(this);
   }
 
-  handleExperienceInput = (state) => {
-    this.setState({
-      experience: [...this.state.experience, state],
-    });
-    // console.log([...this.state.experience, state]);
-  };
+  // handleExperienceInput = (e, key, state) => {
+  //   console.log(this.state)
+  //   this.setState({
+  //     experience: [...this.state.experience, state],
+  //   });
+  // };
 
   handleChange = (e, key, state) => {
-    // console.log(this);
     if (key === "education") {
       this.setState({
-        education: [...this.state.education, state],
+        [`${key}`]: [...this.state.education, state],
       });
-      // } else if (key === "experience") {
-      //   this.setState({
-      //     experience: [...this.state.experience, state],
-      //   });
-    } else if (key === "photo")
+    } else if (key ==="experience"){
+      this.setState({
+        [`${key}`]: [...this.state.experience, state],
+      });
+    }else if (key === "photo")
       this.setState({
         [`${key}`]: URL.createObjectURL(e.target.files[0]),
       });
@@ -70,7 +67,7 @@ export class Body extends Component {
       <div id="body-container">
         <div id="body-left">
           <General method={this.handleChange} />
-          <Experience method={this.handleExperienceInput} />
+          <Experience method={this.handleChange} />
           <Education method={this.handleChange} />
         </div>
         <div id="body-right">

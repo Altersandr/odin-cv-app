@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import "./styles/Preview.css";
 
 export class Preview extends Component {
-  handleDeleteExperience = this.props.deleteExp;
-  handleDeleteEducation = this.props.deleteEdu;
+  handleDeleteExperience = this.props.deleteExp();
+  handleDeleteEducation = this.props.deleteEdu();
 
   handleSkills = () => {
     if (this.props.userInput.skills.length === 0) return;
@@ -16,6 +16,7 @@ export class Preview extends Component {
 
   handleTasks = (props) => {
     let index = props.index;
+    console.log(props)
     if (this.props.userInput.experience[index].tasks === undefined) return;
     let tasks = this.props.userInput.experience[index].tasks.split(",");
     let taskArray = tasks.map((task) => <li key={task}>{task}</li>);
@@ -23,9 +24,11 @@ export class Preview extends Component {
   };
 
   handleExperience = (props) => {
+    // console.log(Experience)
     const length = props.experience.length;
+    // console.log(length)
     if (length === 0) return;
-    else {
+     
       let jobs = props.experience.map((job, i) => {
         return (
           <div key={job + i}>
@@ -47,11 +50,11 @@ export class Preview extends Component {
         );
       });
       return <div>{jobs}</div>;
-    }
+    
   };
 
   handleEducation = () => {
-    console.log(this.props)
+    // console.log(this.props)
     const length = this.props.userInput.education.length;
     if (length === 0) return;
     else {
