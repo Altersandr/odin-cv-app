@@ -4,7 +4,6 @@ import "./styles/Preview.css";
 export class Preview extends Component {
   handleDeleteExperience = this.props.deleteExp;
   handleDeleteEducation = this.props.deleteEdu;
-  handleStateEdit = this.props.handleStateEdit;
 
   handleSkills = () => {
     if (this.props.userInput.skills.length === 0) return;
@@ -52,6 +51,7 @@ export class Preview extends Component {
   };
 
   handleEducation = () => {
+    console.log(this.props)
     const length = this.props.userInput.education.length;
     if (length === 0) return;
     else {
