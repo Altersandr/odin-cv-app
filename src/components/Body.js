@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { General } from "./General";
 import { Experience } from "./Experience";
 import { Education } from "./Education";
@@ -6,71 +6,99 @@ import { Preview } from "./Preview";
 
 import "./styles/Body.css";
 
-export class Body extends Component {
-  constructor() {
-    super();
+export const Body = () => {
+  const [info, setInfo] = useState({
+    name: "",
+    title: "",
+    skills: "",
+    email: "",
+    number: "",
+    website: "",
+    bio: "",
+  });
 
-    this.state = {
-      name: "",
-      title: "",
-      skills: "",
-      email: "",
-      number: "",
-      website: "",
-      bio: "",
-      photo: "",
-      experience: [],
-      education: [],
-    };
-  }
+  // const [name, setName] = useState("");
+  // const [title, setTitle] = useState("");
+  // const [skills, setSkills] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [number, setNumber] = useState("");
+  // const [website, setWebsite] = useState("");
+  // const [bio, setBio] = useState("");
+  // const [photo, setPhoto] = useState("");
+  // const [experience, setExperience] = useState([]);
+  // const [education, setEducation] = useState([]);
 
-  handleChange = (e, key, state) => {
-    if (key === "education") {
-      this.setState({
-        [`${key}`]: [...this.state.education, state],
-      });
-    } else if (key === "experience") {
-      this.setState({
-        [`${key}`]: [...this.state.experience, state],
-      });
-    } else if (key === "photo")
-      this.setState({
-        [`${key}`]: URL.createObjectURL(e.target.files[0]),
-      });
-    else
-      this.setState({
-        [`${key}`]: e.target.value,
-      });
+  // const userInput = {
+  //   name: name,
+  //   title: title,
+  //   skills: skills,
+  //   email: email,
+  //   number: number,
+  //   website: website,
+  //   bio: bio,
+  //   photo: photo,
+  //   experience: experience,
+  //   education: education,
+  // };
+
+  // this.state = {
+  //   name: "",
+  //   title: "",
+  //   skills: "",
+  //   email: "",
+  //   number: "",
+  //   website: "",
+  //   bio: "",
+  //   photo: "",
+  //   experience: [],
+  //   education: [],
+  // };
+
+  const handleStateChange = (e, key, state) => {
+    if (key === "education") setEducation([...education, state]);
+    else if (key === "experience") setExperience([...experience, state]);
+    else if (key === "photo") setPhoto(URL.createObjectURL(e.target.files[0]));
+    else {
+      [`set${state}()`];
+    }
+    // this.setState({
+    //   [`${key}`]: e.target.value,
+    // });
   };
 
-  handleDeleteExperience = (id) => {
-    this.setState({
-      experience: [...this.state.experience.filter((job) => job.id !== id)],
-    });
+  const handleDeleteExperience = (id) => {
+    setExperience([...experience.filter((job) => job.id !== id)]);
   };
 
-  handleDeleteEducation = (id) => {
-    this.setState({
-      education: [...this.state.education.filter((school) => school.id !== id)],
-    });
+  const handleDeleteEducation = (id) => {
+    setEducation([...education.filter((school) => school.id !== id)]);
   };
 
-  render() {
-    return (
-      <div id="body-container">
-        <div id="body-left">
-          <General method={this.handleChange} />
-          <Experience method={this.handleChange} />
-          <Education method={this.handleChange} />
-        </div>
-        <div id="body-right">
-          <Preview
-            userInput={this.state}
-            deleteExp={this.handleDeleteExperience}
-            deleteEdu={this.handleDeleteEducation}
-          />
-        </div>
+  return (
+    <div id="body-container">
+      <div id="body-left">
+        <General handleStateChange={handleStateChange} />
+        <Experience handleStateChange={handleStateChange} />
+        <Education handleStateChange={handleStateChange} />
       </div>
-    );
-  }
-}
+      <div id="body-right">
+        <Preview
+          userInput={{
+            name: name,
+            title: title,
+            skills: skills,
+            email: email,
+            number: number,
+            website: website,
+            bio: bio,
+            photo: photo,
+            experience: experience,
+            education: education,
+          }}
+          deleteExp={handleDeleteExperience}
+          deleteEdu={handleDeleteEducation}
+        />
+      </div>
+    </div>
+  );
+};
