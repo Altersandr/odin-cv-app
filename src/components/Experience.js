@@ -1,7 +1,7 @@
 import { format } from "date-fns";
-import { useState } from "react";
+import React, { useState } from "react";
 
-export const Experience = ({ handleStateChange }) => {
+export const Experience = ({ setExperience, experience }) => {
   const [role, setRole] = useState("");
   const [tasks, setTask] = useState("");
   const [company, setCompany] = useState("");
@@ -55,16 +55,19 @@ export const Experience = ({ handleStateChange }) => {
       ></input>
 
       <button
-        onClick={(e) => {
+        onClick={() => {
+          setExperience([
+            ...experience,
+            {
+              role: role,
+              tasks: tasks,
+              company: company,
+              from: from,
+              to: to,
+              id: id,
+            },
+          ]);
           setId(Math.floor(Math.random() * 10000));
-          handleStateChange(e, "experience", {
-            role: role,
-            tasks: tasks,
-            company: company,
-            from: from,
-            to: to,
-            id: id,
-          });
         }}
       >
         Add

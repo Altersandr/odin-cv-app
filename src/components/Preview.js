@@ -1,19 +1,8 @@
 import "./styles/Preview.css";
-import React, { useState } from "react";
+import React from "react";
 
 export const Preview = (props) => {
-  const [name, setName] = useState("");
-  const [title, setTitle] = useState("");
-  const [skills, setSkills] = useState("");
-  const [email, setEmail] = useState("");
-  const [number, setNumber] = useState("");
-  const [website, setWebsite] = useState("");
-  const [bio, setBio] = useState("");
-  const [photo, setPhoto] = useState("");
-  const [experience, setExperience] = useState([]);
-  const [education, setEducation] = useState([]);
-
-  const { deleteEdu, deleteExp } = props;
+  const { userInput, deleteEdu, deleteExp, education, experience } = props;
 
   const handleSkills = (skills) => {
     if (skills.length === 0) return;
@@ -40,7 +29,7 @@ export const Preview = (props) => {
           <h4>
             From {job.from} To {job.to}
           </h4>
-          <div>{handleTasks(userInput.experience, i)}</div>
+          <div>{handleTasks(experience, i)}</div>
           <br />
           <button
             onClick={() => {
@@ -58,26 +47,24 @@ export const Preview = (props) => {
   const handleEducation = (education) => {
     const length = education.length;
     if (length === 0) return;
-    else {
-      let schools = education.map((school, i) => {
-        return (
-          <div key={school + i}>
-            <h3>{school.school}</h3>
-            <h4>{school.studied}</h4>
-            <h4>Graduated: {school.graduated}</h4>
-            <br />
-            <button
-              onClick={() => {
-                deleteEdu(school.id);
-              }}
-            >
-              Delete
-            </button>
-          </div>
-        );
-      });
-      return <div>{schools}</div>;
-    }
+    let schools = education.map((school, i) => {
+      return (
+        <div key={school + i}>
+          <h3>{school.school}</h3>
+          <h4>{school.studied}</h4>
+          <h4>Graduated: {school.graduated}</h4>
+          <br />
+          <button
+            onClick={() => {
+              deleteEdu(school.id);
+            }}
+          >
+            Delete
+          </button>
+        </div>
+      );
+    });
+    return <div>{schools}</div>;
   };
 
   return (
@@ -109,7 +96,7 @@ export const Preview = (props) => {
         <div id="education">
           <h1>Education</h1>
           <br />
-          <div>{handleEducation(userInput.education)}</div>
+          <div>{handleEducation(education)}</div>
         </div>
       </div>
       <div id="right">
@@ -125,7 +112,7 @@ export const Preview = (props) => {
         <div id="experience">
           <h1>Experience</h1>
           <br />
-          <div>{handleExperience(userInput.experience)}</div>
+          <div>{handleExperience(experience)}</div>
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { format } from "date-fns";
 
-export const Education = ({ handleStateChange }) => {
+export const Education = ({ setEducation, education }) => {
   const [school, setSchool] = useState("");
   const [studied, setStudied] = useState("");
   const [graduated, setGraduated] = useState("");
@@ -41,13 +41,16 @@ export const Education = ({ handleStateChange }) => {
         }
       ></input>
       <button
-        onClick={(e) => {
-          handleStateChange(e, "education", {
-            school: school,
-            studied: studied,
-            graduated: graduated,
-            id: id,
-          });
+        onClick={() => {
+          setEducation([
+            ...education,
+            {
+              school: school,
+              studied: studied,
+              graduated: graduated,
+              id: id,
+            },
+          ]);
           setId(Math.floor(Math.random() * 10000));
         }}
       >

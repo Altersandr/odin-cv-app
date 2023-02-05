@@ -1,3 +1,5 @@
+import React from "react";
+
 export const General = ({ handleStateChange }) => {
   return (
     <section>
@@ -11,7 +13,7 @@ export const General = ({ handleStateChange }) => {
           id="name"
           name="name"
           onChange={(e) => {
-            handleStateChange(e, "name");
+            handleStateChange({ name: e.target.value });
           }}
         ></input>
 
@@ -22,7 +24,7 @@ export const General = ({ handleStateChange }) => {
           id="title"
           name="title"
           onChange={(e) => {
-            handleStateChange(e, "title");
+            handleStateChange({ title: e.target.value });
           }}
         ></input>
 
@@ -33,7 +35,7 @@ export const General = ({ handleStateChange }) => {
           name="number"
           placeholder="separate on comma"
           onChange={(e) => {
-            handleStateChange(e, "skills");
+            handleStateChange({ skills: e.target.value });
           }}
         ></input>
 
@@ -44,7 +46,7 @@ export const General = ({ handleStateChange }) => {
           id="email"
           name="email"
           onChange={(e) => {
-            handleStateChange(e, "email");
+            handleStateChange({ email: e.target.value });
           }}
           required
         ></input>
@@ -55,7 +57,7 @@ export const General = ({ handleStateChange }) => {
           id="number"
           name="number"
           onChange={(e) => {
-            handleStateChange(e, "number");
+            handleStateChange({ number: e.target.value });
           }}
           required
         ></input>
@@ -66,7 +68,7 @@ export const General = ({ handleStateChange }) => {
           id="website"
           name="website"
           onChange={(e) => {
-            handleStateChange(e, "website");
+            handleStateChange({ website: e.target.value });
           }}
         ></input>
 
@@ -78,7 +80,7 @@ export const General = ({ handleStateChange }) => {
           rows="5"
           cols="33"
           onChange={(e) => {
-            handleStateChange(e, "bio");
+            handleStateChange({ bio: e.target.value });
           }}
         ></textarea>
 
@@ -90,7 +92,9 @@ export const General = ({ handleStateChange }) => {
             name="photoUpload"
             accept="image/*"
             onChange={(e) => {
-              handleStateChange(e, "photo");
+              handleStateChange({
+                photo: URL.createObjectURL(e.target.files[0]),
+              });
             }}
           ></input>
         </label>
